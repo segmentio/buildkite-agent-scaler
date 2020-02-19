@@ -13,4 +13,4 @@ steps:
   - wait
   - name: ":docker:"
     command: .buildkite/steps/build-docker.sh
-    branches: master
+    # branches: master
