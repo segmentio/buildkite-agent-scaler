@@ -1,3 +1,5 @@
+env:
+  SEGMENT_CONTEXTS: 'ecr'
 steps:
   - name: ":golang:"
     command: ".buildkite/steps/tests.sh"
