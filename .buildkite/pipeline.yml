@@ -1,6 +1,6 @@
+env:
+  SEGMENT_CONTEXTS: 'aws-credentials,ecr'
 steps:
-    env:
-      SEGMENT_CONTEXTS: 'aws-credentials,ecr'
   - name: ":golang:"
     command: ".buildkite/steps/tests.sh"
     plugins:
