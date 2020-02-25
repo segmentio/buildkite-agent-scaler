@@ -1,4 +1,6 @@
 steps:
+    env:
+      SEGMENT_CONTEXTS: 'aws-credentials,ecr'
   - name: ":golang:"
     command: ".buildkite/steps/tests.sh"
     plugins:
@@ -11,8 +13,6 @@ steps:
   - wait
   - name: ":docker:"
     command: .buildkite/steps/build-docker.sh
-    env:
-      SEGMENT_CONTEXTS: 'ecr'
 
   - name: ":lambda:"
     command: .buildkite/steps/build-lambda.sh
@@ -22,12 +22,8 @@ steps:
   - wait
   - label: ":s3:"
     command: .buildkite/steps/upload-to-s3.sh
-    env:
-      SEGMENT_CONTEXTS: 'aws-credentials'
 
   - wait
   - name: ":pipeline:"
     command: .buildkite/steps/upload-release-steps.sh
     branches: master
-    env:
-      SEGMENT_CONTEXTS: 'aws-credentials'
