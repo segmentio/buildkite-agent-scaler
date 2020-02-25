@@ -31,7 +31,6 @@ lambda/handler: lambda/main.go
 		--workdir /go/src/github.com/buildkite/buildkite-agent-scaler \
 		--rm golang:1.13 \
 		go build -ldflags="$(LD_FLAGS)" -o ./lambda/handler ./lambda
-	chmod +x lambda/handler
 
 lambda-sync: handler.zip
 	aws s3 sync \
